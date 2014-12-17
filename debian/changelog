@@ -1,0 +1,11 @@
+apertium-nob (0.1.0+svn~58076-1) trusty; urgency=low
+
+  * Rebuilt for Trusty.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 17 Dec 2014 12:52:35 +0530
+
+apertium-nob (0.1.0-1) experimental; urgency=low
+
+  * Initial release
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
