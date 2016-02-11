@@ -1,10 +1,13 @@
 # -*- cg-pre-pipe: "apertium -d . nob-morph|cg-conv -a 2>/dev/null" -*-
+# GPL-2, more info at:
+# https://svn.code.sf.net/p/apertium/svn/trunk/apertium-nno-nob/dev/current-OBT
 
 SOFT-DELIMITERS = "<,>" cm ;
 DELIMITERS = "<.>" "<:>" "<!>" "<?>" "<|>" "<$.>" "<$:>" "<$!>" "<$?>" "<$|>" sent ;
 
 #PARENTHESES = ("<$(>" "$<)>") ("<$[>" "<$]>") ("<${>" "<$}>") ;
 
+LIST sp = sp ;
 LIST -ende = ".*ende"r  ;
 LIST %aldri% = "aldri"  ;
 LIST %all% = "all"  ;
@@ -20,7 +23,7 @@ LIST %annen/samme%/kvant-fem = ("annen"  f) ("samme" ) (det qnt) ;
 LIST %annen/samme%/kvant-mask = ("annen"  m) ("samme" ) (det qnt) ;
 LIST %annen/samme%/kvant-nøyt = ("annen"  nt) ("samme" ) (det qnt) ;
 LIST %ansatte/tiltalte% = ("tiltale"  adj def sg) ("tiltale"  adj pl) ("ansatt"  adj pl) ("ansatt"  adj def sg) ;
-LIST %antas% = ("anta"  pass) ;
+LIST %antas% = ("anta"  pasv) ;
 LIST %arm/ben/kropp/legg/tre%-fl = ("arm"  pl) ("ben"  pl) ("bein"  pl)("kropp"  pl) ("legg"  pl) ("tre"  pl) ;
 LIST %at% = "at"  ;
 LIST %at/om% = "om"  "at"  ;
@@ -63,7 +66,7 @@ LIST %enn% = "enn"  ;
 LIST %et% = ("en"  det qnt nt sg) ;
 LIST %etter% = "etter"  ;
 LIST %etter/fram/opp% = ("etter"  pr) ("fram"  pr) ("frem"  pr) ("opp"  pr) ;
-LIST %eventuelt% = ("eventuell"  adj posi ind nt) ;
+LIST %eventuelt% = ("eventuell"  adj pst ind nt) ;
 LIST %fare%-pret = ("fare"  vblex pret) ;
 LIST %fast% = ("fast"  adj) ;
 LIST %fast%-verb = "tjore"  "surre"  "sette"  "klore"  "brenne"  "binde"  ;
@@ -147,13 +150,13 @@ LIST %klokke% = "klokke"  ;
 LIST %klokke/kl% = ("klokke"  n) ("kl." n acr) ;
 LIST %kort/lang/på% = "på"  "lang"  "kort"  ;
 LIST %la% = "la"  ;
-LIST %langt% = ("lang"  adj posi nt) ;
+LIST %langt% = ("lang"  adj pst nt) ;
 LIST %leder% = ("leder"  n m sg ind) ;
 LIST %lenge% = ("lenge"  adj) ;
 LIST %ligge% = "ligge"  ;
 LIST %lignende/liknende% = "liknende"  "lignende"  ;
 LIST %like% = "like"  ;
-LIST %alt/litt% = ("alt"  det qnt nt sg) ("litt"  adj posi nt ind sg) ;
+LIST %alt/litt% = ("alt"  det qnt nt sg) ("litt"  adj pst nt ind sg) ;
 LIST %mange% = "mange"  ;
 LIST %med% = "med"  ;
 LIST %meget% = "meget"  ;
@@ -223,7 +226,7 @@ LIST %sjakk% = "sjakk"  ;
 LIST %sjelden% = "sjelden"  ;
 LIST %skifte/bytte% = ("skifte"  vblex) ("bytte"  vblex) ;
 LIST %slags% = "slags"  ;
-LIST %slettes% = ("slette"  pass) ;
+LIST %slettes% = ("slette"  pasv) ;
 LIST %slik%-adv = ("slik"  adv) ;
 LIST %slutt% = ("slutt"  n m) ;
 LIST %slå% = ("slå"  vblex) ;
@@ -271,7 +274,7 @@ LIST %ved% = ("ved"  pr) ;
 LIST %vel% = "vel"  ;
 LIST %videre% = ("vid"  adj comp) ;
 LIST %viss% = "viss"  ;
-LIST %visst% = ("viss"  adj posi nt ind sg) ;
+LIST %visst% = ("viss"  adj pst nt ind sg) ;
 LIST %være% = "være"  ;
 LIST %være/bli% = "være"  "bli"  ;
 LIST %ytterligere% = "ytterligere"  ;
@@ -304,7 +307,7 @@ LIST adj-mask/fem = (adj m) (adj f) (adj mf) (adj pprs) (adj def) ;
 LIST adj-mask/nøyt = (adj m) (adj mf) (adj nt) (adj pprs) (adj def) ;
 LIST adj-nøyt = (adj nt) (adj def) (adj pprs) ;
 LIST adj-nøyt-ub = (adj nt ind) (adj pprs) ;
-LIST adj-pos = (adj posi) ;
+LIST adj-pos = (adj pst) ;
 LIST adj-ren = adj ;
 LIST adj-subst-konj = adj n np cnjcoo ;
 LIST adj-sup = (adj sup) ;
@@ -333,7 +336,7 @@ LIST adverbialsubst = "øyeblikk"  "år"  "vinter"  "vei"  "uke"  "torsdag"  "to
 LIST advtype-konj = (cnjcoo <adv>) ;
 LIST agens-p = "av"  ;
 LIST akk = acc ;
-LIST alt = "siden"  adj adv vblex pr prn cnjsub "å" n np ij det cnjcoo <anf> cm <ellipse> <kolon> lpar rpar <semi> <strek> ;
+LIST alt = "siden"  adj adv vblex pr prn cnjsub "å" n np ij det cnjcoo <anf> cm <ellipse> <kolon> lpar rpar <semi> guio ;
 LIST anf = <anf> <ANF>;
 LIST bare-adj = "vedkommende"  "ugjort"  "tilsvarende"  "skrå"  "nær"  "ny"  "middels"  "kort"  "iført"  "halv"  "fånyttes"  "fri"  ;
 LIST be = def ;
@@ -392,7 +395,7 @@ LIST det/adj/komma/konj = "$," "," (adj m) (adj f) (adj mf) (adj pl) (adj pprs) 
 LIST det/adv = det adv ;
 LIST det/subst-gen = det (n gen) (np gen) ;
 LIST ditrans = "donere"  d1 d2 d3 d6 d7 rl6 rl7 rl8 ;
-LIST ellipse = ("$--" <strek>) ("--" <strek>) <ellipse> ;
+LIST ellipse = ("$--" guio) ("--" guio) <ellipse> ;
 LIST ent = sg ;
 LIST ent-fem-subst = (n f sg) (np f sg) ;
 LIST ent-fem-subst/tall-subst/målsubst/tidssubst = "år"  "uke"  "tusen"  "trillion"  "tonnkilometer"  "time"  "tiendelssekund"  "tidelssekund"  "snes"  "sjømil"  "sekundmeter"  "sekund"  "prosent"  "nanosekund"  "nanometer"  "måned"  "mrd." "minutt"  "millisekund"  "million"  "millimeter"  "milliliter"  "milligram"  "milliard"  "mill." "mil"  "mikrometer"  "meter"  "liter"  "kvartmil"  "kvartliter"  "kvadrillion"  "kvadratmillimeter"  "kvadratmeter"  "kvadratkilometer"  "kvadratdesimeter"  "kvadratcentimeter"  "kubikkmillimeter"  "kubikkmeter"  "kubikkdesimeter"  "kubikkcentimeter"  "kilometer"  "kilogram"  "kilo"  "hundredelssekund"  "hundre"  "hektoliter"  "hektogram"  "halvår"  "halvmillion"  "halvmil"  "halvmeter"  "halvliter"  "halvkilo"  "gram"  "døgn"  "dusin"  "desimeter"  "desiliter"  "desigram"  "dekaliter"  "dag"  "centimeter"  "centiliter"  "centigram"  "billion"  "billiard"  (n f sg) (np f sg) ("gang"  pl) ;
@@ -403,11 +406,11 @@ LIST ent-ub = (sg ind) ;
 LIST f-subj = ("det"  prn) ;
 LIST farger = "turkis"  "svart"  "rød"  "rosa"  "oransje"  "lilla"  "indigo"  "hvit"  "gul"  "grønn"  "grå"  "fiolett"  "blå"  ;
 LIST farlige-adj = "talle" "brakk"  "året"  "være"  "vite"  "vis"  "var"  "tids"  "sige"  "se"  "mige"  "live"  "like"  "lette"  "lage"  "helle"  "før"  "fore"  "ete"  "eie"  "egen"  "bar"  "annen"  "angående"  "ale"   ;
-LIST farlige-adj-subst = "gifte"  "vedkommende"  "venstre"  "tunge"  "skrå"  "skarp"  "rett"  "ny"  "like"  "lik"  "kvalm"  "høy"  "helt"  "helt"  "heller"  "gode"  "faren"  (adj comp) ("visse"  n) ("sivil"  n) ("absolutt"  n) ("konkret"  n) ("sett"  nt) ("halv"  ubøy) ("var"  n ind) ("lit"  sg def) ("middel"  gen) ("al"  pl def) ;
+LIST farlige-adj-subst = "gifte"  "vedkommende"  "venstre"  "tunge"  "skrå"  "skarp"  "rett"  "ny"  "like"  "lik"  "kvalm"  "høy"  "helt"  "helt"  "heller"  "gode"  "faren"  (adj comp) ("visse"  n) ("sivil"  n) ("absolutt"  n) ("konkret"  n) ("sett"  nt) ("halv"  ubøy) ("var"  n ind) ("lit"  sg def) ("middel"  gen) ("al"  pl def) ("vannrett" n);
 LIST farlige-fl-subst = ("hjelp"  pl ind) ("lede"  m pl ind) ("led"  m pl ind) ("falle"  m pl ind) ("fall"  m pl ind) ("snus"  m pl ind) ("finn"  pl ind) ("finne"  pl ind) ("komme"  pl ind) ("under"  pl ind) ("får"  pl) ("ønske"  pl) ("slag"  gen) ("jeg"  pl) ("lo"  pl) ("var"  pl) ("nå"  pl) ("sett"  pl) ("al"  pl def) ("mot"  pl ind) ("mens" pl ind) ("men"  pl ind) ("gir"  pl ind) ;
 LIST farlige-forledd-verb = ("kontre"  pret) ("helle"  pres) ("nå"  pres) ("elle"  pres) ("fø"  pres) ("fare"  pret) ("tro"  adj) ("tiltale"  pret) ("klokke"  pret) ;
 LIST farlige-imp = "bile"  "busse"  "live"  "vare"  "så"  "se"  "nå"  "neie"  "mine"  "mene"  "hanse"  "føre"  "fore"  "ete"  "ene"  "bedre"  "more"  "fare" ;
-LIST farlige-inf = ("felle"  vblex inf pass) "tre"  "så"  "støtte"  "skole"  "pose"  "nå"  "nye"  "norske"  "neste"  "lite"  "like"  "lekre"  "hele"  "friske"  "fri"  "fjerne"  "finere"  "disse"  "dette"  "bedre"  ("slette"  pass) "røde"  ;
+LIST farlige-inf = ("felle"  vblex inf pasv) "tre"  "så"  "støtte"  "skole"  "pose"  "nå"  "nye"  "norske"  "neste"  "lite"  "like"  "lekre"  "hele"  "friske"  "fri"  "fjerne"  "finere"  "disse"  "dette"  "bedre"  ("slette"  pasv) "røde"  ;
 LIST farlige-mask-subst = "ville"  "ved"  "syke"  "skrå"  "like"  "helt"  "heller"  "eldste"  ("ho"  sg ind gen) ("å"  sg ind) ("alt"  sg ind) ("mens"  sg ind) ("meget"  sg ind) ("side"  sg def) ("lit"  sg def) ("middel"  gen) ("gode"  sg ind) ("al"  pl def) ;
 LIST farlige-nøyt-subst = "vilt"  "venstre"  "var"  "under"  "tre"  "skrå"  "sett"  "selv"  "nå"  "ny"  "mot"  "lik"  "konkret"  "jeg"  "høyre"  "godt"  "gode"  "folk"  "bak"  ("stikk"  adv) ("alt"  ind) ("fort"  ind) ("slag"  gen) ("lo"  pl) ("al"  pl def) ("middel"  gen) ("men"  sg ind) ("men"  pl ind) ;
 LIST farlige-part = "kante"  "vite"  "via"  "vekke"  "svare"  "stole"  "spenne"  "skjønne"  "sale"  "renne"  "re"  "pule"  "prime"  "ose"  "oppta"  "omvende"  "nære"  "nyte"  "mige"  "make"  "lyse"  "live"  "lite"  "lete"  "leite"  "kontre"  "klare"  "hete"  "helle"  "hele"  "gråte"  "gale"  "fortsette"  "fore"  "ete"  "desidere"  "brune"  "bre"  "bene"  "bare"  "anstrenge"  "ale"  gen ;
@@ -458,9 +461,9 @@ LIST ikke-adv-adj-subst = "siden"  "$--" "--" "$:" ":" "$-" "-" "$," "," lpar rp
 LIST ikke-adv-adj-subst-det-prep = "$-" "-" "$," "," vblex prn cnjsub cnjcoo "å" ij <<< >>> <ellipse> ;
 LIST ikke-adv-adj-subst-pron-det = cnjcoo pr cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) (det dem) (n gen) ("$," clb) ("," clb) ;
 LIST ikke-adv-adj-subst-pron-konj-det = "siden"  pr cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) (det dem) (n gen) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
-LIST ikke-adv-adj-subst-pron-konj-det-sbu2 = "siden"  pr "å" ij <ellipse> (vblex pres) (vblex pret) (vblex inf) (vblex pass) (vblex pp) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
-LIST ikke-adv-adj-subst-pron-konj-det2 = "siden"  pr cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) (vblex inf) (vblex pass) (vblex pp) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
-LIST ikke-adv-adj-subst-pron-konj-det2-prep = cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) (vblex inf) (vblex pass) (vblex pp) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
+LIST ikke-adv-adj-subst-pron-konj-det-sbu2 = "siden"  pr "å" ij <ellipse> (vblex pres) (vblex pret) (vblex inf) (vblex pasv) (vblex pp) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
+LIST ikke-adv-adj-subst-pron-konj-det2 = "siden"  pr cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) (vblex inf) (vblex pasv) (vblex pp) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
+LIST ikke-adv-adj-subst-pron-konj-det2-prep = cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) (vblex inf) (vblex pasv) (vblex pp) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
 LIST ikke-adv-adj-substmgen-konj-detmdem-prep = prn cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
 LIST ikke-adv-adj-substmgen-pron-detmdem-prep = cnjsub "å" ij cnjcoo <ellipse> (vblex pres) (vblex pret) ("$," clb) ("," clb) ;
 LIST ikke-adv-adj-substmgen-pron-konj-detmdem-prep = cnjsub "å" ij <ellipse> (vblex pres) (vblex pret) ("$," clb) ("," clb) (clb cnjcoo) (cnjcoo <adv>) ;
@@ -516,16 +519,16 @@ LIST kolon = ("$:" clb) (":" clb) ;
 LIST komma = "$," "," ;
 LIST komma-interj = "$," "," ij ;
 LIST komma/konj = "$," "," cnjcoo ;
-LIST komma/konj/strek = "$," "," <strek> cnjcoo ;
+LIST komma/konj/strek = "$," "," guio cnjcoo ;
 LIST komma/setn-slutt = "$," "," <<< ;
-LIST komma/strek = "$," "," <strek> ;
+LIST komma/strek = "$," "," guio ;
 LIST komp = comp ;
 LIST konj = cnjcoo ;
 LIST konj-<adv> = (cnjcoo <adv>) ;
 LIST konj/pron = cnjcoo (prn p1) (prn p2) (prn p3) ;
-LIST kop = "være"  "virke"  "synes"  "hete"  "bli"  ("kalle"  pass) ;
+LIST kop = "være"  "virke"  "synes"  "hete"  "bli"  ("kalle"  pasv) ;
 LIST kop-u-%hete/kalle = "være"  "virke"  "synes"  "bli" ;
-LIST kop-fv = ("være"  pres) ("bli"  pres) ("hete"  pres) ("synes"  pres) ("virke"  pres) ("kalle"  pres pass) ("være"  pret) ("bli"  pret) ("hete"  pret) ("synes"  pret) ("virke"  pret) ("kalle"  pret pass) ;
+LIST kop-fv = ("være"  pres) ("bli"  pres) ("hete"  pres) ("synes"  pres) ("virke"  pres) ("kalle"  pres pasv) ("være"  pret) ("bli"  pret) ("hete"  pret) ("synes"  pret) ("virke"  pret) ("kalle"  pret pasv) ;
 LIST kvant = qnt ;
 LIST kvant-med-flere = "mange"  "halv"  "flere"  (det qnt) ("adskillig"  pl) ;
 LIST lo#animat = "øyenvitne"  "øyensten"  "øyenlege"  "østtysker"  "østerriker"  "ørn"  "økonom"  "ærfugl"  "æresmedlem"  "æresborger"  "århusianer"  "åndemaner"  "zulu"  "zoolog"  "yppersteprest"  "væpner"  "voldsmann"  "voldsforbryter"  "vitne"  "vitenskapsmann"  "visesanger"  "visepresident"  "viseborgermester"  "viseadmiral"  "vipe"  "vinner"  "vinhandler"  "ving"  "vinduspusser"  "vinbonde"  "villdyr"  "villand"  "viking"  "vikar"  "vietnameser"  "vi"  "vever"  "veterinær"  "vesttysker"  "vestlending"  "vestjyde"  "vertshuseier"  "vertinne"  "vert"  "verksmester"  "verge"  "verdensmester"  "venninne"  "venn"  "vendelbo"  "velgjører"  "velger"  "vekter"  "veimuseum"  "veileder"  "vegetarianer"  "vedlikeholdssjef"  "vasall"  "vaktmester"  "vaktmann"  "vakt"  "vagabond"  "vadefugl"  "uvenn"  "utøver"  "utvandrer"  "utvalgsformann"  "utskudd"  "utnytter"  "utleier"  "utkaster"  "utgiver"  "utfordrer"  "utenriksminister"  "utbytter"  "utbyder"  "urostifter"  "urmaker"  "universitetslærer"  "ungkar"  "unge"  "ungdom"  "ungarer"  "undulat"  "undervisningsminister"  "undertrykker"  "undertegnede"  "undersått"  "underdirektør"  "ukrainer"  "ugle"  "tømmermester"  "tømmermann"  "tyv"  "tysker"  "tyrker"  "tyrann"  "typograf"  "tvillingsøster"  "tvillingbror"  "tvilling"  "tviler"  "tv-titter" "turistsjef"  "turist"  "turgåer"  "tuareg"  "tsjekker"  "tsar"  "trøster"  "tryllekunstner"  "tronfølger"  "trompetist"  "trommeslager"  "trollmann"  "triumfator"  "trilling"  "trener"  "tremenning"  "trellkvinne"  "trell"  "trekkfugl"  "trekkdyr"  "transvestitt"  "trane"  "trafikant"  "toppsjef"  "toppscorer"  "toppolitiker"  "toppleder"  "toller"  "tolk"  "togfører"  "tobakkshandler"  "tjenestepike"  "tjenestemann"  "tjenerskap"  "tjener"  "tilskuer"  "tillitsvalgt"  "tillitsmann"  "tilhører"  "tilflytter"  "tilbeder"  "tigger"  "thailender"  "terrorist"  "terne"  "terapeut"  "teoretiker"  "teolog"  "tenorsaksofonist"  "tenor"  "tennisspiller"  "tenker"  "telegrafist"  "tekstforfatter"  "tekniker"  "tegner"  "teatergjenger"  "taper"  "tantebarn"  "tante"  "tanntekniker"  "tannpleier"  "tannlege"  "tamil"  "taler"  "talepedagog"  "talentspeider"  "taktiker"  "søvngjenger"  "søster"  "søskenbarn"  "søsken"  "sørjyde"  "søramerikaner"  "sørafrikaner"  "søppelmann"  "sønnesønn"  "sønn"  "sølvsmed"  "særling"  "sæddonor"  "syrer"  "synder"  "syndebukk"  "sympatisør"  "syklist"  "sykkelrytter"  "sykkelreparatør"  "sykkelhandler"  "sykepleierske"  "sykepleier"  "syerske"  "svømmer"  "svoger"  "svindler"  "svigersøster"  "svigersønn"  "svigermor"  "svigerinne"  "svigerfar"  "svigerdatter"  "svigerbror"  "svenske"  "svenn"  "sveitser"  "sveiser"  "svane"  "svale"  "suppleant"  "sultan"  "støttepedagog"  "stær"  "styrmann"  "styremedlem"  "stuepike"  "studine"  "student"  "stråmann"  "stripper"  "streikevakt"  "streber"  "strateg"  "straffange"  "stormester"  "stork"  "storfavoritt"  "storesøster"  "storebror"  "stoffmisbruker"  "stifter"  "stesønn"  "stemor"  "stemor"  "steinhugger"  "stefar"  "stedfortreder"  "stedatter"  "stebarn"  "statssjef"  "statsrevisor"  "statsoverhode"  "statsminister"  "statsborger"  "statsadvokat"  "statistiker"  "statist"  "stat"  "stasoverhode"  "stasjonsmester"  "stamkunde"  "stamgjest"  "stamfar"  "stabssjef"  "spøkefugl"  "spåmann"  "spåkone"  "spurvefugl"  "spurv"  "sprøytenarkoman"  "språkforsker"  "språkbruker"  "sprinter"  "sponsor"  "spion"  "spiller"  "spillemann"  "spesialist"  "spekulant"  "speider"  "sparringspartner"  "sparer"  "spanjol"  "sovjetborger"  "sosiolog"  "sosialrådgiver"  "sosialpedagog"  "sosialminister"  "sosialarbeider"  "sopran"  "sommerfugl"  "somalier"  "solodanser"  "soldat"  "sogneprest"  "snekkermester"  "snekker"  "snegl"  "småborger"  "smugler"  "smeller"  "smed"  "slåsskjempe"  "slektning"  "slavinne"  "slave"  "slaktermester"  "slakter"  "skøyteforbund"  "skytter"  "skyldner"  "skulptør"  "skuespillerinne"  "skuespiller"  "skrytepave"  "skribent"  "skredder"  "skotte"  "skorsteinsfeier"  "skomaker"  "skolevaktmester"  "skolepsykolog"  "skolelærer"  "skolelege"  "skoleinspektør"  "skoleelev"  "skoledirektør"  "skogsarbeider"  "skogdue"  "skjørtejeger"  "skjøge"  "skjære"  "skipsreder"  "skipsfører"  "skipsbygger"  "skipper"  "skiløper"  "skilsmissebarn"  "skilpadde"  "skeptiker"  "skatteyter"  "skandinav"  "skald"  "sjørøver"  "sjømann"  "sjøhelt"  "sjåfør"  "sjefsredaktør"  "sjef"  "sikkerhetsfolk"  "sidemann"  "sidekamerat"  "sheriff"  "sheik"  "sexolog"  "servitrise"  "serber"  "sensor"  "senator"  "selvmorder"  "selger"  "sekundant"  "sekretær"  "sekretær"  "sekretariatssjef"  "seiler"  "seierherre"  "seer"  "scenograf"  "sangfugl"  "sangerinne"  "sanger"  "samler"  "samferdselsminister"  "saksøker"  "saksofonist"  "sakfører"  "sadist"  "røyker"  "røykdykker"  "røver"  "rør"  "rømling"  "rådgiver"  "råd"  "rytter"  "russer"  "rumener"  "rovfugl"  "romer"  "rockesanger"  "rival"  "riksråd"  "riksadvokat"  "revisor"  "restauratør"  "resipient"  "reservelege"  "resepsjonist"  "representant"  "reporter"  "rengjøringsassistent"  "rektor"  "rekrutt"  "reisende"  "reiseleder"  "reingjeter"  "reineier"  "regjering"  "regissør"  "regionsykehus"  "regent"  "redningsmann"  "reder"  "redaktør"  "redaksjonssekretær"  "ravn"  "pøt"  "pårørende"  "påfugl"  "pyskoanalytiker"  "pyroman"  "pusher"  "publikummer"  "psykoterapeut"  "psykiater"  "prøysser"  "prost"  "prosessfullmektig"  "promotor"  "proletar"  "programmerer"  "profet"  "professor"  "produsent"  "privatperson"  "privatdetektiv"  "prinsesse"  "prins"  "prest"  "president"  "predikant"  "pottemaker"  "postmester"  "portør"  "portugiser"  "portier"  "politimester"  "politimann"  "politiker"  "politikammer"  "politibetjent"  "politiassistent"  "politi"  "polfarer"  "polakk"  "pleier"  "plattenslager"  "plageånd"  "pilot"  "pilkaster"  "pianist"  "personalsjef"  "perser"  "pendler"  "pelikan"  "pedagog"  "pave"  "patriark"  "pastor"  "passasjer"  "pasje"  "pasient"  "partner"  "partifelle"  "part"  "pariser"  "pappa"  "papegøye"  "panser"  "panser"  "pamp"  "palestiner"  "pakistaner"  "oversykepleierske"  "oversetter"  "overlærer"  "overlege"  "overhode"  "outsider"  "orrfugl"  "ornitolog"  "orlogskaptein"  "organist"  "organisator"  "organisasjon"  "ordstyrer"  "orakel"  "optiker"  "oppvasker"  "oppleser"  "oppkjøper"  "oppfinner"  "oppdretter"  "operatør"  "operasanger"  "onkel"  "ombudsmann"  "oljeselskap"  "oldemor"  "oldefar"  "oldebarn"  "offiser"  "observatør"  "oberstløytnant"  "oberst"  "nyhetsoppleser"  "nybegynner"  "normanner"  "nordmann"  "nordamerikaner"  "noen"  "niese"  "nevø"  "nederlender"  "navigatør"  "naturlege"  "naturforsker"  "nattevakt"  "nattergal"  "narr"  "narkoman"  "nabo"  "møller"  "møll"  "møbelarkitekt"  "måke"  "myndighet"  "mygg"  "musvåk"  "muslim"  "musikkpedagog"  "musiker"  "musikant"  "museumsinspektør"  "museumsbetjent"  "murersvenn"  "murermester"  "murer"  "munk"  "motstander"  "moteskaper"  "moster"  "mormor"  "morfar"  "morder"  "mor"  "montør"  "mongol"  "modell"  "misjonær"  "minoritet"  "ministerpresident"  "minister"  "militærnekter"  "mexicaner"  "meteorolog"  "metallarbeider"  "mester"  "menneske"  "mellomste"  "melkemann"  "mekaniker"  "meis"  "meieri"  "megler"  "medisinmann"  "medisiner"  "medhjelper"  "medarbeider"  "matematiker"  "matador"  "massør"  "maskinsjef"  "maskinmester"  "maskiningeniør"  "maskinarbeider"  "marokkaner"  "marketingsjef"  "marinesoldat"  "marineoffiser"  "mannekeng"  "mann"  "mange"  "man"  "mamma"  "malersvenn"  "malermester"  "maler"  "makedoner"  "major"  "magister"  "lærling"  "lærerinne"  "lærer"  "låtskriver"  "lyriker"  "lobbyist"  "livvakt"  "livredder"  "litterat"  "litauer"  "linjemann"  "lillesøster"  "lillebror"  "likemann"  "libaneser"  "lerke"  "lektor"  "leietager"  "leiesoldat"  "legionær"  "legevakt"  "legesekretær"  "lege"  "leder"  "lastebilsjåfør"  "langturssjåfør"  "landslagsspiller"  "landsdommer"  "landbruker"  "landarbeider"  "laborant"  "københavner"  "kvinne"  "kuwaiter"  "kusk"  "kusine"  "kursdeltaker"  "kurer"  "kurder"  "kurator"  "kunstner"  "kunstmaler"  "kunsthåndverker"  "kunsthistoriker"  "kunsthandler"  "kunde"  "kulturminister"  "ku"  "krypskytter"  "krykkje"  "kronikør"  "kroat"  "kritiker"  "kriminalassistent"  "kriger"  "kremmer"  "kranfører"  "kosmonaut"  "korsanger"  "korrespondent"  "korporal"  "koreograf"  "koreaner"  "koordinator"  "kontrollør"  "kontraktspiller"  "kontorsjef"  "kontorist"  "kontorassistent"  "kontaktperson"  "kontaktmann"  "konsulent"  "konsul"  "konstruktør"  "konservator"  "konsertmester"  "konkurrent"  "konge"  "konfirmant"  "konferansier"  "kone"  "konduktør"  "konditor"  "komtesse"  "komponist"  "kommunestyremedlem"  "kommune"  "kommunaldirektør"  "kommentator"  "kommandør"  "komiker"  "kokkepike"  "kokk"  "knivstikker"  "klubb"  "klokker"  "klinikkassistent"  "klient"  "klatrer"  "klasselærer"  "klager"  "kjøttmeis"  "kjørelærer"  "kjøpmann"  "kjøper"  "kjøkkensjef"  "kjerring"  "kjemiker"  "kjemiingeniør"  "kirurg"  "kiropraktor"  "kirkeminister"  "kinogjenger"  "kineser"  "kidnapper"  "keramiker"  "kelner"  "keiserinne"  "keiser"  "keeper"  "kavaler"  "kar"  "kaptein"  "kantor"  "kamerat"  "journalist"  "jordmor"  "jente"  "jeg"  "jarl"  "italiener"  "israeler"  "islending"  "isbjørn"  "institusjon"  "insekt"  "indremisjonsselskap"  "idrettsmann"  "høne"  "hvem"  "hustru"  "husokkupant"  "hun"  "hane"  "han"  "hallodame"  "hakkespett"  "gårdeier"  "gutt"  "grønnsakshandler"  "gråspurv"  "greve"  "greker"  "gjenbo"  "genetiker"  "generalsekretær"  "generalmajor"  "generalløytnant"  "generaldirektør"  "general"  "gendarm"  "gast"  "gartner"  "gardist"  "førstekandidat"  "fører"  "fødselshjelper"  "færøying"  "fysiker"  "fyrvokter"  "fyrdirektør"  "fyllik"  "fyllekjører"  "fylkesskolesjef"  "funksjonær"  "fullmektig"  "fugl"  "froskemann"  "fritidspedagog"  "frisør"  "franskmann"  "fotomodell"  "fotohandler"  "fotograf"  "fotogalleri"  "fotgjenger"  "fotballspiller"  "fostersønn"  "fostermor"  "fosterfar"  "fosterdatter"  "forvaltningssjef"  "forvalter"  "forsvarsminister"  "forsvarer"  "forstanderinne"  "forstander"  "forsker"  "forsanger"  "forretningsmann"  "forretningsfører"  "formann"  "forliksmann"  "forlegger"  "forfatterinne"  "forfatter"  "forelder"  "forbundskansler"  "forbundsformann"  "forbrukerombudsmann"  "folketingsmedlem"  "folketingsmann"  "folketingsmann"  "folkeskolelærer"  "folk"  "flyttemann"  "flyktning"  "flyger"  "flue"  "flamingo"  "fjortis"  "fiskeørn"  "fiskeskipper"  "fiskeriminister"  "fisker"  "fiskehandler"  "fiolinist"  "finne"  "fink"  "finansminister"  "filolog"  "filmskuespiller"  "filmprodusent"  "filminstruktør"  "fiende"  "fetter"  "fergemann"  "fengselsbetjent"  "feltherre"  "faster"  "fasan"  "farmor"  "farmer"  "farmasøyt"  "fargehandler"  "farfar"  "farbror"  "far"  "fantast"  "fangevokter"  "fan"  "familiemedlem"  "familie"  "falk"  "fagmann"  "fagforeningsleder"  "fagfolk"  "fagfelle"  "fadder"  "fabrikkarbeider"  "eventyrer"  "europeer"  "etterlikner"  "etnograf"  "eskimo"  "erobrer"  "erkebisp"  "erkebiskop"  "ergoterapeut"  "entusiast"  "entreprenør"  "entertainer"  "enkemann"  "enkefrue"  "enkedronning"  "enke"  "englender"  "enehersker"  "eneboligeier"  "emigrant"  "embetsmann"  "elskerinne"  "elsker"  "elev"  "elektriker"  "ektepar"  "ektemann"  "ektefelle"  "ekstremist"  "ekspert"  "ekspedisjonssjef"  "egypter"  "dørvakt"  "døgnflue"  "dyr"  "du"  "drømmer"  "drosjesjåfør"  "dranker"  "dramatiker"  "donor"  "domprost"  "dommer"  "doktor"  "dikter"  "diktator"  "designer"  "designer"  "departementssjef"  "departement"  "demonstrant"  "deltager"  "dekksgutt"  "dekan"  "degn"  "debutant"  "datterdatter"  "datter"  "danske"  "damefrisør"  "dame"  "dagsommerfugl"  "dagmamma"  "dagleier"  "cubaner"  "cowboy"  "cellist"  "canadier"  "bøddel"  "bærer"  "båtsmann"  "bysbarn"  "byråd"  "byrettsdommer"  "byplanlegger"  "byggmester"  "byggherre"  "bydel"  "bybør"  "bruden"  "bror"  "brite"  "brevvenn"  "brevskriver"  "brevdue"  "brems"  "brasilianer"  "brannmann"  "branninspektør"  "botaniker"  "borger"  "bordkavaler"  "borddame"  "bondemann"  "bonde"  "bokbinder"  "bodybuilder"  "bløtdyr"  "blåmeis"  "blotter"  "blomsterhandler"  "bisp"  "biskop"  "biperson"  "biolog"  "biokjemiker"  "billedkunstner"  "billedhugger"  "bille"  "bilist"  "bileier"  "bie"  "bidragsyter"  "bibliotekar"  "beundrer"  "betjent"  "bestyrer"  "bestemor"  "bestefar"  "beslutningstaker"  "beskytter"  "belgier"  "bekjent"  "beiler"  "begge"  "bebør"  "bass"  "baryton"  "bartender"  "baronesse"  "baron"  "barnelege"  "barnehagepedagog"  "barnebokforfatter"  "barnebarn"  "barn"  "baker"  "avtaker"  "avsender"  "avis"  "avdelingssykepleierske"  "avdelingssykepleier"  "atlet"  "astronom"  "astronaut"  "astrolog"  "assistent"  "arkitekt"  "argentiner"  "arbeider"  "annen"  "anmelder"  "anleggsgartner"  "angriper"  "anfører"  "andunge"  "analysator"  "amme"  "amerikaner"  "alpinist"  "alkoholiker"  "agent"  "afrikaner"  "afghaner"  "advokat"  "administrator"  "adjunkt"  "adelsmann"  "abonnent"  "wangerud"  "vinmonopolkøere"  "vesten"  "usa"  "toten"  "torkill"  "smirnov"  "skane"  "schipper"  "regjeringen"  "readyjente"  "readyjente"  "readygutt"  "politiforbund"  "plesner"  "pilkaster"  "palacio"  "oslo"  "nato"   "matthew"  "matthaus"  "mannesmann"  "lykambes"  "likudregjeringen"  "lawrence"  "kors"  "killengreen"  "justisdepartementet"  "jarvoll"  "indremisjonsselskapet"  "hemingkjørerne"  "heie"  "gudmunsson"  "gudbrandsdalen"  "group"  "gregard"  "gomanbakeri"  "giga"  "folkpartiet"  "fanebust"  "elsero"  "elgin"  "djurhuus"  "clinton"  "carney"  "byutviklingskomiteen"  "byutviklingskomiteen"  "breiby"  "blumenthal"  "beth"  "bergelevene"  "baste"  "alpinanlegg"  "akershus"  "as"  "as"  "46åringen" "10åringen" <person> <org> ("dere"  nom) ("ingen"  m) ("ingen"  f) ("de"  prn p3) ("all"  pl) ("en"  prn) ("undertegne"  pl adj) ;
@@ -547,7 +550,8 @@ LIST mask-adj-det = (adj m) (adj mf) (adj def) (adj pprs) (det m) ;
 LIST mask-be = (m def) ;
 LIST mask-det = (det m) ;
 LIST mask-ent = (m sg) (mf sg) (adj def) (m ubøy) (np) ;
-LIST mask/fem = m f mf (adj def) (adj pprs) ;
+LIST mask/fem/mf = m f mf ;
+LIST mask/fem/adj = m f mf (adj def) (adj pprs) ;
 LIST mest-sanns-adj-istf-subst = "visse"  "ville"  "venstre"  "velkommen"  "stille"  "snille"  "myke"  "mjuke"  "klare"  "høyre"  "høgre"  "flott"  ;
 LIST mest-sanns-subst-istf-adj = "året"  "skyld"  "lo"  "hull"  "faren"  ("skygg"  def) ("folke"  adj pp) ("live"  adj pp) ("kute"  adj pp) ("leg"  adj pl) ("leg"  adj def) ;
 LIST mest-sanns-verb-istf-subst = "temmer"  "tapper"  "suger"  "strever"  "strekker"  "stiller"  "stikker"  "slukker"  "koker"  "hogger"  "binder"  ;
@@ -574,6 +578,7 @@ LIST nr2-det-mask-ub = ("noe"  m) ("annen"  m ind) ("eneste") ("slik"  m) ("sån
 LIST nr2-det-nøyt-be = ("noe"  nt) ("ene"  def) ("eneste") ("samme"  def) ("forrige"  def) ("neste"  def) ("annen"  def) ("egen"  nt def) ("eigen"  nt def) ;
 LIST nr2-det-nøyt-ub = ("noe"  nt) ("annen"  nt ind) ("eneste") ("slik"  nt) ("sånn"  nt) ("sådan"  nt) ("egen"  nt ind) ("eigen"  nt ind) ("halvannen"  nt) ("hver"  det nt) ;
 LIST nr2-det-u-fl = "sånn"  "sådan"  "slik"  "samme"  "neste"  "hver"  "halvannen"  "forrige"  "eneste"  "eigen"  "egen"  "annen"  ("ene"  det) ;
+LIST mf = mf ;
 LIST nøyt = nt ;
 LIST nøyt-adj-det = (adj nt) (det nt) (adj def) (adj pprs) ;
 LIST nøyt-be = (nt def) ;
@@ -584,34 +589,36 @@ LIST objpred-pron-verb = "ønske"  "spise"  "snakke"  "si"  "se"  "oppleve"  "ma
 LIST objpred-verb = "ønske"  "male"  "lage"  "kalle"  "holde"  "gjøre"  ;
 LIST ord-%andre%-ent/fl-subst = "halvår"  "forsøk"  "avsnitt"  ;
 LIST orden = ("ene"  det qnt) ord ;
-LIST orden-pos = ("ene"  det qnt) (ord posi) ;
+LIST orden-pos = ("ene"  det qnt) (ord pst) ;
 LIST overskrift = overskrift ;
 LIST p-hj-verb = "være"  "ha"  "få"  "bli"  ;
 LIST parentes = lpar rpar ;
 LIST parentes-beg = lpar ;
 LIST parentes-slutt = rpar ;
-LIST pass = (vblex pass) ;
+LIST pass = (vblex pasv) ;
 LIST pass_tar_pp = "forsøke" "anta" "meddele" "få" "frykte" "gjøre" "dokumentere" "anse" "begjære" "søke" "holde" "vente" "vurdere" "foreslå" "kreve" ; # blir forsøkt lokket, antas forsvunnet
 LIST verb_tar_%om%cnjsub = "vurdere" "spørre" "høre" "høres" "vite" "avklare" "tenke" "vise" ;
-LIST perf-gen = (adj pp gen) (vblex pp pass) ;
+LIST perf-gen = (adj pp gen) (vblex pp pasv) ;
 LIST perf-part = (vblex pp) ;
 LIST perf-part/<perf-part> = (vblex pp) (adj pp) ;
+LIST perf-part-mf = (adj pp mf) ;
+LIST perf-part-nt = (adj pp nt) ;
 LIST perf-part/inf = (vblex pp) (vblex inf) ;
 LIST periode-beg = >>> ;
-LIST periode-beg/clb/strek = >>> clb <strek> ;
-LIST periode-beg/komma/konj/strek = >>> cm cnjcoo <strek> ;
+LIST periode-beg/clb/strek = >>> clb guio ;
+LIST periode-beg/komma/konj/strek = >>> cm cnjcoo guio ;
 LIST periode-beg/konj-clb = >>> (clb cnjcoo) ;
 LIST periode-beg/sbu = >>> cnjsub ;
 LIST periode-slutt = <<< ;
 LIST periode-slutt/clb-konj = <<< (clb cnjcoo) ;
 LIST periode-slutt/konj-clb = <<< (clb cnjcoo) ;
 LIST person-u-suffiks = <person> ;
-LIST pos-be-ent = (adj posi def sg) ;
-LIST pos-be-fl = (adj posi pl) ;
-LIST pos-ub-ent = (adj posi ind sg) ;
-LIST pos-ub-ent-mask/fem = (adj posi mf ind sg) ;
-LIST pos-ub-ent-nøyt = (adj posi nt ind sg) ;
-LIST pos-ub-fl = (adj posi pl) ;
+LIST pos-be-ent = (adj pst def sg) ;
+LIST pos-be-fl = (adj pst pl) ;
+LIST pos-ub-ent = (adj pst ind sg) ;
+LIST pos-ub-ent-mask/fem = (adj pst mf ind sg) ;
+LIST pos-ub-ent-nøyt = (adj pst nt ind sg) ;
+LIST pos-ub-fl = (adj pst pl) ;
 LIST poss-det = (det pos) ;
 LIST poss-det-nøyt = (det pos nt) ;
 LIST poss/gen = pos gen ;
@@ -676,7 +683,7 @@ LIST setn-gr/parentes-beg = "hvorledes"  "hvorfor"  "hvordan"  "hvor"  "hva"  "$
 LIST setn-gr/prep = "hvorledes"  "hvorfor"  "hvordan"  "hvor"  "hva"  "$--" "--" "$-" "-" pr cnjsub @sbu >>> <<< ("$:" clb) (":" clb) ("$;" clb) (";" clb) (clb cnjcoo) (clb cm) ;
 LIST setn-gr/verb = "hvorledes"  "hvorfor"  "hvordan"  "hvor"  "hva"  "$--" "--" "$-" "-" vblex cnjsub @sbu >>> <<< ("$:" clb) (":" clb) ("$;" clb) (";" clb) (clb cnjcoo) (clb cm) ;
 LIST punktum/ellipse = ("." clb) ("$." clb) (".." clb) ("$.." clb) ("..." clb) ("$..." clb) ;
-LIST setn-start-med-strek/anf = <anf> <ANF> <strek> >>> ;
+LIST setn-start-med-strek/anf = <anf> <ANF> guio >>> ;
 LIST setningsadv = "øyensynlig"  "òg" "visstnok"  "visselig"  "ventelig"  "vanligvis"  "unektelig"  "uheldigvis"  "tydeligvis"  "trolig"  "tilfeldigvis"  "sogar"  "sluttelig"  "simpelthen"  "sannsynligvis"  "sannelig"  "saktens"  "rimeligvis"  "riktignok"  "også"  "ofte"  "nødvendigvis"  "nesten"  "neppe"  "nemlig"  "naturligvis"  "muligvis"  "muligens"  "lykkeligvis"  "liksom"  "klokelig"  "kanskje"  "jo"  "jamvel"  "jammen"  "især"  "imidlertid"  "ikke"  "heldigvis"  "gudskjelov"  "gledeligvis"  "følgelig"  "fortrinnsvis"  "forresten"  "fornuftigvis"  "formodentlig"  "formelig"  "forhåpentligvis"  "ellers"  "eksempelvis"  "dog"  "dessverre"  "dessuten"  "beklageligvis"  "bare"  "antakelig"  "antagelig"  "altså"  "alltid"  "aldri"  ("kan"  adv) ("hende"  adv) ("nok"  adv) ("nå"  adv) ("så"  adv) ("da"  adv) ;
 LIST sier-verb = "tilføye"  "tenke"  "svare"  "sukke"  "spørre"  "skrive"  "si"  "rope"  "mumle"  "mene"  "hyle"  "hviske"  "fortsette"  "fortelle"  "anta"  "advare"  ;
 LIST sikre-navn = "svein"  "rune"  "helle"  "dag"  "bjørn"  "arne"  (np m) (np f) ;
@@ -688,11 +695,11 @@ LIST språk = "tysk"  "svensk"  "spansk"  "portugisisk"  "nynorsk"  "norsk"  "ke
 LIST spørreadv = "hvorledes"  "hvorfor"  "hvordan"  "hvor"  "hva"  ;
 LIST spørsmål-t = "$?" "?" ;
 LIST sted = top ;
-LIST storbokstav = <*> ;
-LIST berre-storbokstav =  ("<[[:upper:]]+>"r);
-LIST strek = <strek> ;
-LIST strek/parentes = <strek> lpar rpar ;
-LIST strek/parentes-beg/anf = <strek> lpar <anf> ;
+LIST storbokstav = "<\\p{Lu}.*>"r ;
+LIST berre-storbokstav =  ("<\\p{Lu}+>"r);
+LIST strek = guio ;
+LIST strek/parentes = guio lpar rpar ;
+LIST strek/parentes-beg/anf = guio lpar <anf> ;
 LIST subst = n np ;
 LIST subst-appell = (n) ; 				    # (n appell)
 LIST subst-appell-ub-ent = (n sg ind) ; 		    # (n appell sg ind)
@@ -714,7 +721,7 @@ LIST subst/adj = n np adj ;
 LIST subst/adj-ent-be = (n sg def) (np sg def) (adj def sg) (adj pprs) ;
 LIST subst/adj-fl = (n pl) (np pl) (adj pl) (adj pprs) ;
 LIST subst/adj-gen = (adj gen) (n gen) (np gen) ;
-LIST subst/adj-pos = n np (adj posi) ;
+LIST subst/adj-pos = n np (adj pst) ;
 LIST subst/adj/adv = n np adj adv ;
 LIST subst/adj/det = n np adj det ;
 LIST subst/adj/det-kvant-%av% = n np adj ("av"  pr) (det qnt) ;
@@ -730,7 +737,7 @@ LIST tall = "1" (det qnt pl) ("en"  det qnt) ("én" det qnt) "pi" ;
 LIST tall-fl = (det qnt pl) "pi" ;
 LIST tall-subst = "tusen"  "trillion"  "titusen"  "mrd." "million"  "milliard"  "mill." "kvadrillion"  "hundre"  "halvmillion"  "billion"  "billiard" "pi" ;
 LIST tall/tall-subst = "tusen"  "trillion"  "mrd." "million"  "milliard"  "mill." "kvadrillion"  "hundre"  "halvmillion"  "billion"  "billiard"  "1" (det qnt pl) ("en"  det qnt) ("én" det qnt) "pi" ;
-LIST tegnsetting = cm <ellipse> <kolon> lpar rpar <semi> <strek> ;
+LIST tegnsetting = cm <ellipse> <kolon> lpar rpar <semi> guio ;
 LIST tidsadv = "tidlig"  "sen"  "sein"  "nå"  "lenge"  "igjen"  "før"  "etterpå"  "da"  ("snar"  nt ind sg) ;
 LIST tittel = <tittel> @tittel ;
 LIST tr1/tr4-10/tr14/dtr1-9/refl/pr1/pr3-10/adv2/adv6-11/adv13-14/kaus = tr1 tr4 tr5 tr6 tr7 tr8 tr9 tr10 tr14 d1 d2 d3 d4 d5 d6 d7 d8 d9 rl1 rl2 rl3 rl4 rl5 rl6 rl7 rl8 rl9 rl10 rl11 rl12 rl13 rl14 rl15 rl16 rl17 rl18 rl19 rl20 pr1 pr3 pr4 pr5 pr6 pr7 pr8 pr9 pr10 a2 a6 a7 a8 a9 a10 a11 a13 a14 k1 k2 ;
@@ -779,15 +786,26 @@ LIST verk = <verk> ;
 
 # sec 1
 CONSTRAINTS
+SELECT:over_30._Men clb IF
+        (0/1 det-kvant)
+        (0 (<<<) LINK 1*> (*) LINK @1 storbokstav) # This is the way to say "I am at a sentence-ending cohort and the one immediately to my right is storbokstav"
+        # TODO: why can't I say >1?
+;
+
+SELECT ("å" sep) IF (*-1 (vblex sep)) ;
+SELECT (vblex sep) IF (*1 ("å" sep)) ;
 
 ## select domain
 #:3787
-  "<absolutt>"   SELECT:3787   (adj posi nt ind sg) IF
+  "<absolutt>"   SELECT:3787   (adj pst nt ind sg) IF
 	(1 %ikke/ingen%)
 ;
 #  "absolutt ikke"
 
 
+"<LES>" SELECT (vblex imp);
+"<Les>" SELECT (vblex imp);
+"<les>" SELECT (vblex imp);
 
 #:3783
   "<akter>"   SELECT:3783   (pr) IF
@@ -1183,12 +1201,13 @@ CONSTRAINTS
 ;
 #  skal en forsker bry seg
 
+"<bukkene>" SELECT subst-mask;
 
 #:3724
   "<den>"   SELECT:3724   (det) IF
 	(-1 %hele%)
 	(2 subst/adj)
-	(2 mask/fem)
+	(2 mask/fem/adj)
 ;
 #  "hele den norske befolkning"
 
@@ -1609,6 +1628,7 @@ CONSTRAINTS
 #: 4060
 "<fór>" SELECT:4060 (vblex pret)
 	(0 verb)
+;
 
 #:3650
   "<for>"   SELECT:3650   (adv) IF
@@ -1737,6 +1757,9 @@ CONSTRAINTS
 ;
 #  "å være redd for (prep)"))
 
+"<Fant>" SELECT:Fant-en-feil pret IF
+        (NOT *0C fv)
+;
 
 
 #:3636
@@ -2225,7 +2248,13 @@ CONSTRAINTS
 #  "Dette er en kvinne hvis bedrifter vil huskes"
 #      :group 2
 
-
+# If it's really a cnjsub, it's typically handled by earlier rules:
+"<hvor>" SELECT:hvor-pene-de-er (adv) IF
+        (1 adj)
+;
+"<Hvor>" SELECT:Hvor-stor-er-du (adv) IF
+        (1 adj)
+;
 
 #:4008
  "<i>"   SELECT:4008   (pr) IF
@@ -2241,6 +2270,9 @@ CONSTRAINTS
 #  "Størst sjanse for at ille er adv ikke adj (vondt)"))
 
 
+SELECT ("ikon") + subst-nøyt IF
+	(0C subst)
+;
 
 #:3509
   "<intet>"   SELECT:3509   (det nt) IF
@@ -2333,6 +2365,10 @@ CONSTRAINTS
 ;
 
 
+"<lav>"   SELECT   (adj) IF
+        (NOT *-2 ("art") OR ("mose") OR ("blad"))
+;
+
 
 #:3486
   "<legg>"   SELECT:3486   (vblex imp) IF
@@ -2424,7 +2460,7 @@ CONSTRAINTS
 
 
 #:3463
-  "<lite>"   SELECT:3463   (adj posi ind) IF
+  "<lite>"   SELECT:3463   (adj pst ind) IF
 	(1C ub-subst)
 	(NOT 1 fl)
 ;
@@ -2433,7 +2469,7 @@ CONSTRAINTS
 
 
 #:3461
-  "<lite>"   SELECT:3461   (adj posi nt ind sg) IF
+  "<lite>"   SELECT:3461   (adj pst nt ind sg) IF
 	(1 prep)
 	(NOT 1 %på%)
 ;
@@ -2443,7 +2479,7 @@ CONSTRAINTS
 
 
 #:3462
-  "<lite>"   SELECT:3462   (adj posi nt ind sg) IF
+  "<lite>"   SELECT:3462   (adj pst nt ind sg) IF
 	(1C adj)
 ;
 #  "lite god"
@@ -2472,6 +2508,9 @@ CONSTRAINTS
 #  "Jeg har lyst til å gjøre det"
 
 
+  "<Løs>"   SELECT:Løs-ut imp IF
+	(1 ("<ut>"))
+;
 
 #:3451
   "<man>"   SELECT:3451   (prn) IF
@@ -2648,7 +2687,7 @@ CONSTRAINTS
 
 
 #:3419
-  "<mye>"   SELECT:3419   (adj posi mf ind sg) IF
+  "<mye>"   SELECT:3419   (adj pst mf ind sg) IF
 	(1 %klokke%)
 	(2 kop-fv)
 ;
@@ -2657,7 +2696,7 @@ CONSTRAINTS
 
 
 #:3420
-  "<mye>"   SELECT:3420   (adj posi mf ind sg) IF
+  "<mye>"   SELECT:3420   (adj pst mf ind sg) IF
 	(1 kop-fv)
 	(2 %klokke%)
 ;
@@ -2920,6 +2959,7 @@ CONSTRAINTS
 # «å spørre/vurdere/høre om ...»
 
 
+"<området>" SELECT:ikkje-områdde subst;
 
 #:3364
   "<omvendt>"   SELECT:3364   (adj nt ind) IF
@@ -3109,6 +3149,10 @@ CONSTRAINTS
 #  "ha/få råd til"
 
 
+# TODO: any exceptions?
+"<seg>" REMOVE fv IF
+        (0* fv)
+;
 
 #:3333
   "<seg>"   SELECT:3333   (prn) IF
@@ -3581,7 +3625,7 @@ CONSTRAINTS
 
 
 #:3269
-  "<slett>"   SELECT:3269   (adj posi nt) IF
+  "<slett>"   SELECT:3269   (adj pst nt) IF
 	(1 %ikke/ingen%)
 ;
 #  "slett (adv) ikke"))
@@ -3806,6 +3850,10 @@ CONSTRAINTS
 ;
 #  "det stikk motsatte"
 
+"<støtte>"   SELECT  subst IF
+	(NOT -1 infmerke)
+	(NOT -2 infmerke)
+;
 
 
 #:3236
@@ -4442,7 +4490,7 @@ CONSTRAINTS
 
 
 #:3159
-  "<var>"   SELECT:3159   (adj posi mf) IF
+  "<var>"   SELECT:3159   (adj pst mf) IF
 	(-1 %føre%)
 	(-2 %være%)
 ;
@@ -4452,8 +4500,8 @@ CONSTRAINTS
 
 
 #:3160
-  "<var>"   SELECT:3160   (adj posi mf) IF
-	(*-1O ub-det LINK 0 mask/fem LINK NOT *1 ikke-adv-adj)
+  "<var>"   SELECT:3160   (adj pst mf) IF
+	(*-1O ub-det LINK 0 mask/fem/adj LINK NOT *1 ikke-adv-adj)
 	(*1 ub-ent-mask/fem-subst BARRIER ikke-adv-adj)
 ;
 # group: 4
@@ -4544,7 +4592,7 @@ CONSTRAINTS
 
 
 #:3124
-  "<visst>"   SELECT:3124   (adj posi nt ind sg) IF
+  "<visst>"   SELECT:3124   (adj pst nt ind sg) IF
 	(-1 kop)
 	(1C adj)
 	(-1C pres/pret)
@@ -4554,7 +4602,7 @@ CONSTRAINTS
 
 
 #:3125
-  "<visst>"   SELECT:3125   (adj posi nt ind sg) IF
+  "<visst>"   SELECT:3125   (adj pst nt ind sg) IF
 	(-1 hj-verb)
 	(*1 perf-part/inf BARRIER setn-gr)
 ;
@@ -4919,14 +4967,14 @@ CONSTRAINTS
 
 
 
-;
+"<domene>" REMOVE ("dom");
 
 
 
 #:3713
   "<egen>"   REMOVE:3713   (adj mf) IF
 	(*1 ub-ent-mask/fem-subst BARRIER ikke-adv-adj)
-	(*-1O poss-det LINK 0 mask/fem LINK NOT *1 ikke-adv-adj)
+	(*-1O poss-det LINK 0 mask/fem/adj LINK NOT *1 ikke-adv-adj)
 ;
 #  "vår egen historie"
 
@@ -5075,12 +5123,10 @@ CONSTRAINTS
 
 
 
-#:3673
-  "<far>"   REMOVE:3673   (n nt) IF
-	(1 poss-det)
+ "<far>"   REMOVE:far   (n nt) IF
+	(NEGATE -1C nøyt-det)
+	(NEGATE -1C fl-adj/fl-det - sp)
 ;
-#  "Han traff far (mask) sin
-# 4.2"
 
 
 
@@ -5105,6 +5151,7 @@ CONSTRAINTS
 #  "den er den største som er felt (ikke subst)"))
 
 
+"<fiskene>" REMOVE nøyt;
 
 #:3660
   "<fly>"   REMOVE:3660   (n m) IF
@@ -5619,6 +5666,7 @@ CONSTRAINTS
  "<hjem>"   REMOVE:4048   (pr)
 	 (-2 %hus%)
 	 (-1 %og%)
+;
 #hus og hjem
 
 #:3537
@@ -5997,6 +6045,7 @@ CONSTRAINTS
 	(NOT 1 %opp%)
 ;
 #  "Bare ved: har livet opp stemningen"
+
 
 
 
@@ -6839,7 +6888,7 @@ CONSTRAINTS
 
 
 #:3156
-  "<var>"   REMOVE:3156   (adj posi mf) IF
+  "<var>"   REMOVE:3156   (adj pst mf) IF
 	(NOT -1 %føre%)
 	(*1 ikke-adv-adj BARRIER ub-ent-mask/fem-subst)
 ;
@@ -6848,9 +6897,9 @@ CONSTRAINTS
 
 
 #:3157
-  "<var>"   REMOVE:3157   (adj posi mf) IF
+  "<var>"   REMOVE:3157   (adj pst mf) IF
 	(NOT -1 %føre%)
-	(*-1 ikke-adv-adj LINK NOT 0 ub-det LINK NOT 0 mask/fem)
+	(*-1 ikke-adv-adj LINK NOT 0 ub-det LINK NOT 0 mask/fem/adj)
 ;
 # group: 4
 
@@ -7030,7 +7079,7 @@ CONSTRAINTS
 
 #:3127
   "<ville>"   REMOVE:3127   subst-appell-ub-ent IF
-	(0 mask/fem)
+	(0 mask/fem/adj)
 ;
 #  "Bare: tale i villa"
 
@@ -7083,7 +7132,6 @@ SELECT:4089 (vblex)
 	(*1 %tenner% BARRIER ikke-adv)
 ;
 #bare verb ved "flekke tenner"
-
 
 
 #:3104
@@ -8531,7 +8579,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(NOT 0 pres/pret)
 	(1C adv)
 	(-1C fv)
-	(NOT -2 mask/fem)
+	(NOT -2 mask/fem/adj)
 ;
 #  "er egentlig ikke"
 
@@ -8682,7 +8730,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(NOT 2 adj-fl)
 	(**-1C setn-gr BARRIER kop)
 ;
-#  "Ikke: så omhyggelig (mask/fem) og grei (mask/fem) "))
+#  "Ikke: så omhyggelig (mask/fem/adj) og grei (mask/fem/adj) "))
 
 
 
@@ -8799,7 +8847,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(NOT -1 <adv>)
 	(-2C ub-ent-nøyt-adj)
 	(NOT 2 adverb)
-	(NOT -2 mask/fem)
+	(NOT -2 mask/fem/adj)
 ;
 # group: 15
 
@@ -8811,7 +8859,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(NOT 0 pres/pret)
 	(1 komma)
 	(NOT 2 adverb)
-	(*-1 ikke-adv LINK 0 konj LINK NOT 0 <adv> LINK -1C ub-ent-nøyt-adj LINK NOT 0 mask/fem)
+	(*-1 ikke-adv LINK 0 konj LINK NOT 0 <adv> LINK -1C ub-ent-nøyt-adj LINK NOT 0 mask/fem/adj)
 ;
 # group: 15
 
@@ -8825,7 +8873,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(NOT 1 komma)
 	(NOT -1 <adv>)
 	(-2C ub-ent-nøyt-adj)
-	(NOT -2 mask/fem)
+	(NOT -2 mask/fem/adj)
 ;
 # group: 15
 
@@ -8837,7 +8885,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(NOT 0 pres/pret)
 	(NOT 1 ub-ent-nøyt-subst)
 	(NOT 1 komma)
-	(*-1 ikke-adv LINK 0 konj LINK NOT 0 <adv> LINK -1C ub-ent-nøyt-adj LINK NOT 0 mask/fem)
+	(*-1 ikke-adv LINK 0 konj LINK NOT 0 <adv> LINK -1C ub-ent-nøyt-adj LINK NOT 0 mask/fem/adj)
 ;
 # group: 15
 
@@ -9537,7 +9585,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2942
- SELECT:2942 (adj posi ind) IF
+ SELECT:2942 (adj pst ind) IF
 	(0 %mye/lite%)
 	(1C ub-subst)
 	(NOT 1 fl)
@@ -9548,7 +9596,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2939
- SELECT:2939 (adj posi def sg) IF
+ SELECT:2939 (adj pst def sg) IF
 	(NOT 0 farlige-adj)
 	(*-1 %hver%-fem BARRIER ikke-adv-adj)
 	(*-1 %hver%-fem LINK NOT -1 det)
@@ -9560,7 +9608,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2940
- SELECT:2940 (adj posi def sg) IF
+ SELECT:2940 (adj pst def sg) IF
 	(NOT 0 farlige-adj)
 	(*-1 %hver%-mask BARRIER ikke-adv-adj)
 	(*-1 %hver%-mask LINK NOT -1 det)
@@ -9572,7 +9620,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2941
- SELECT:2941 (adj posi def sg) IF
+ SELECT:2941 (adj pst def sg) IF
 	(NOT 0 farlige-adj)
 	(*-1 %hver%-nøyt BARRIER ikke-adv-adj)
 	(*-1 %hver%-nøyt LINK NOT -1 det)
@@ -9584,7 +9632,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2937
- SELECT:2937 (adj posi pl) IF
+ SELECT:2937 (adj pst pl) IF
 	(NOT 0 fv)
 	(NOT 0 det)
 	(NOT 0 subst)
@@ -9597,7 +9645,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2938
- SELECT:2938 (adj posi pl) IF
+ SELECT:2938 (adj pst pl) IF
 	(NOT 0 fv)
 	(NOT 0 det)
 	(NOT 0 subst)
@@ -9610,7 +9658,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2932
- SELECT:2932 (adj posi nt ind sg) IF
+ SELECT:2932 (adj pst nt ind sg) IF
 	(0 %eventuelt%)
 	(NOT -1 %under%)
 ;
@@ -9619,7 +9667,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2933
- SELECT:2933 (adj posi nt ind sg) IF
+ SELECT:2933 (adj pst nt ind sg) IF
 	(0 %mye/lite%)
 	(1 infmerke)
 ;
@@ -9629,7 +9677,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2934
- SELECT:2934 (adj posi nt ind sg) IF
+ SELECT:2934 (adj pst nt ind sg) IF
 	(0 %mye/lite%)
 	(1C perf-part)
 ;
@@ -9639,7 +9687,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2935
- SELECT:2935 (adj posi nt ind sg) IF
+ SELECT:2935 (adj pst nt ind sg) IF
 	(0 %mye/lite%)
 	(1 prep)
 	(NOT 1 %på%)
@@ -9651,7 +9699,7 @@ SELECT:2963 (adj nt ind sg) IF
 
 
 #:2936
- SELECT:2936 (adj posi nt ind sg) IF
+ SELECT:2936 (adj pst nt ind sg) IF
 	(0 %mye/lite%)
 	(1C adj)
 ;
@@ -12523,7 +12571,7 @@ SELECT:2963 (adj nt ind sg) IF
 # (NOT LR0 IKKE-ADJ-SUBST))
 # ei (ganske gul) vogn
 # (NOT 0 %NOEN/INGEN%) fordi noen i mengden ub-det
-# er lik i mask/fem /fl"
+# er lik i mask/fem/adj /fl"
 
 
 
@@ -13603,7 +13651,7 @@ SELECT:2963 (adj nt ind sg) IF
 	(0 %den/denne%)
 	(1 adverb)
 	(-1C fv)
-	(NOT 2 mask/fem)
+	(NOT 2 mask/fem/adj)
 	(*-2O setn-gr LINK 1 prep LINK NOT *1 setn-gr)
 ;
 #  "i dag spiser den kjøtt"
@@ -13614,7 +13662,7 @@ SELECT:2963 (adj nt ind sg) IF
  SELECT:2599 pron-pers IF
 	(0 %den/denne%)
 	(-1C fv)
-	(NOT 1 mask/fem)
+	(NOT 1 mask/fem/adj)
 	(NOT 1 adj-sup)
 	(NOT 1 adverb)
 	(*-2O setn-gr LINK 1 prep LINK NOT *1 setn-gr)
@@ -13627,7 +13675,7 @@ SELECT:2963 (adj nt ind sg) IF
  SELECT:2600 pron-pers IF
 	(0 %den/denne%)
 	(-1C fv)
-	(NOT 1 mask/fem)
+	(NOT 1 mask/fem/adj)
 	(NOT 1 adj-sup)
 	(NOT 1 adverb)
 	(-2C adverb)
@@ -15848,7 +15896,7 @@ SELECT:5009 (vblex pres) IF
 
 
 #:2434
- SELECT:2434 (vblex inf pass) IF
+ SELECT:2434 (vblex inf pasv) IF
 	(0 farlige-inf)
 	(NOT 0 %slettes%)
 	(-1 m-hj-verb)
@@ -15858,7 +15906,7 @@ SELECT:5009 (vblex pres) IF
 
 
 #:2437
- SELECT:2437 (vblex inf pass) IF
+ SELECT:2437 (vblex inf pasv) IF
 	(0 farlige-inf)
 	(NOT 0 %slettes%)
 	(NOT -1 det)
@@ -15874,7 +15922,7 @@ SELECT:5009 (vblex pres) IF
 
 
 #:2439
- SELECT:2439 (vblex inf pass) IF
+ SELECT:2439 (vblex inf pasv) IF
 	(0 farlige-inf)
 	(NOT 0 %slettes%)
 	(NOT -1 ikke-adv-subst-pron-konj)
@@ -17050,7 +17098,7 @@ SELECT:5008 (vblex pret) IF
 
 
 #:2337
- SELECT:2337 (vblex pass) IF
+ SELECT:2337 (vblex pasv) IF
 	(NOT 0 s-verb)
 	(NOT 0 imp)
 	(NOT *1 overskrift)
@@ -17112,6 +17160,13 @@ SELECT:2335 (vblex) IF
 ;
 #  "Det er vel (adv) forskjell
 # NOT: SBU: før, PREP: for, PERF/PART: visst"
+
+SELECT:fisken-ble-funnet perf-part-mf IF
+	(NOT 0 farlige-part)
+	(NOT -1 det-prep-infmerke-adjbe)
+	(NOT -2 be-nøyt-det)
+	(*-1 %være/bli% BARRIER fv OR perf-part OR setn-gr OR nom LINK *-1 nom + mask/fem/mf BARRIER setn-gr)
+;
 
 
 #:2410
@@ -17222,6 +17277,11 @@ CONSTRAINTS
 #CONSTRAINTS
 ## remove ndomain
 
+REMOVE:et-faglig-senter subst-mask IF
+        (-2C ub-nøyt-det)
+        (-1C adj-mask/nøyt)
+        (0C subst-mask OR subst-nøyt)
+;
 
 #:4090
 REMOVE:4090 (vblex)
@@ -17726,7 +17786,7 @@ REMOVE:4090 (vblex)
 #:2289
  REMOVE:2289 (adj pp mf ind sg) IF
 	(1 subst/adj)
-	(NOT 1 mask/fem)
+	(NOT 1 mask/fem/adj)
 	(NOT 1 adj-komp)
 	(NOT 1 adj-sup)
 	(NOT 1 subst-prop)
@@ -18030,7 +18090,7 @@ REMOVE:4090 (vblex)
 #:2272
  REMOVE:2272 (adj mf sg) IF
 	(0 pos-ub-ent-nøyt)
-	(NOT 1 mask/fem)
+	(NOT 1 mask/fem/adj)
 	(NOT -1 int-setn-gr)
 	(NOT -1 det-ent)
 	(*-1 ikke-adv LINK 0 iv LINK NOT 0 pred-verb LINK NOT 0 %dømme% LINK NOT 0 %så%)
@@ -18074,7 +18134,7 @@ REMOVE:4090 (vblex)
 	(NOT 1 mask-ent)
 	(NOT 1 fem-ent)
 ;
-#  "fra liknende (ikke adj mask/fem) samfunnslag (fl eller nøyt ent)"))
+#  "fra liknende (ikke adj mask/fem/adj) samfunnslag (fl eller nøyt ent)"))
 
 
 
@@ -20046,7 +20106,7 @@ REMOVE:2135 (det) IF
 	(NOT 2 komma/konj)
 ;
 #  "forsøker å finne np-er med bare det + adj
-# (noe må fjernes istf velges pga lik mask/fem)
+# (noe må fjernes istf velges pga lik mask/fem/adj)
 
 
 
@@ -20929,7 +20989,7 @@ REMOVE:2135 (det) IF
 #:2005
  REMOVE:2005 (np gen) IF
 	(0 subst-prop)
-	(0 mask/fem)
+	(0 mask/fem/adj)
 	(1 subst-prop)
 ;
 #  "Johannes Hansen
@@ -21129,7 +21189,7 @@ REMOVE:gen-subst gen-subst IF
 
 #:1983
  REMOVE:1983 subst IF
-	(0 mask/fem)
+	(0 mask/fem/adj)
 	(0 ub)
 	(0 fv)
 	(-1 nøyt)
@@ -21227,6 +21287,13 @@ REMOVE:gen-subst gen-subst IF
 #  "at vedkommende (ikke subst) areal ble regulert
 # 27.11"
 
+
+
+#:1991
+ select:1991 subst IF
+	(0 retning)
+	(-1 %i%)
+;
 
 
 #:1991
@@ -23331,7 +23398,7 @@ CONSTRAINTS
 
 
 #:4064
- "<rette>"   SELECT:4064   (adj posi def) IF
+ "<rette>"   SELECT:4064   (adj pst def) IF
 	  (-1 %den/det/de%)
 ;
 #være den rette
@@ -23379,7 +23446,7 @@ CONSTRAINTS
 
 
 #:4049
-  "<visst>"   SELECT:4049   (adj posi nt ind sg) IF
+  "<visst>"   SELECT:4049   (adj pst nt ind sg) IF
 	(-1C setn-gr)
 
 ;
@@ -23394,7 +23461,7 @@ CONSTRAINTS
 #  ha visst ser ut til oftest å være perf-part
 
 #:4052
-  "<visst>"   SELECT:4052   (adj posi nt ind sg) IF
+  "<visst>"   SELECT:4052   (adj pst nt ind sg) IF
 	(0 verb)
 
 ;
@@ -23423,7 +23490,7 @@ CONSTRAINTS
 	(NOT 1  det)
 	(NOT 1 adj/subst)
 #mest sannsynlig substantiv etter prep
-
+;
 
 
 
@@ -23481,6 +23548,7 @@ CONSTRAINTS
 	(NOT -1 adj-fl)
 	(NOT -1 fl-det)
 # er oftest ikke i betydningen "spor"  (fl)
+;
 
 
 #:4014
@@ -23585,6 +23653,11 @@ CONSTRAINTS
 #:3602
   "<før>"   REMOVE:3602   (adj ind sg) IF
 	(*-1O ub-ent-mask/fem-det LINK *1 ikke-adv-adj)
+;
+
+
+"<funnet>" REMOVE:fragment-funnet subst IF
+	(NOT 0* fv)
 ;
 
 
@@ -23735,6 +23808,7 @@ REMOVE:skrev ("<skrev>"ri "skreve") IF
 #:4045
  REMOVE  ("<mine>"  ) + (vblex imp) IF
 	 (0 poss-det)
+;
 
 #:3414
   "<navnet>"   REMOVE:3414   (adj) IF
@@ -23797,7 +23871,7 @@ REMOVE:skrev ("<skrev>"ri "skreve") IF
 #:4041
  "<sin>"   REMOVE:4041   (n acr) IF
 	(0 poss-det)
-
+;
 
 
 #:3280
@@ -23913,33 +23987,6 @@ REMOVE:skrev ("<skrev>"ri "skreve") IF
 	(-1 tall-fl)
 ;
 
-#:6206
-  "<LES>"   REMOVE:6206 (vblex pass) IF
-  	(0 imp)
-	(-1 setn-gr)
-;
-  "<Les>"   REMOVE:6206 (vblex pass) IF
-  	(0 imp)
-	(-1 setn-gr)
-;
-  "<les>"   REMOVE:6206 (vblex pass) IF
-  	(0 imp)
-	(-1 setn-gr)
-;
-#:6207
-  "<LES>"   REMOVE:6207 (n) IF
-  	(0 imp)
-	(-1 setn-gr)
-;
-  "<Les>"   REMOVE:6207 (n) IF
-  	(0 imp)
-	(-1 setn-gr)
-;
-  "<les>"   REMOVE:6207 (n) IF
-  	(0 imp)
-	(-1 setn-gr)
-;
-#  «Les også:» lite sannsynleg at dette er passiv av «le» --KBU
 
 
 
@@ -25477,6 +25524,10 @@ SELECT:4081 (adj) IF
 ;
 
 
+SELECT:no-pres-pres subst
+	(-1 pres)
+	(0C subst OR pres)
+;
 
 #4086
  SELECT:4086 (np)
@@ -26172,6 +26223,7 @@ SELECT:4081 (adj) IF
 ;
 
 
+
 #:4034
  REMOVE:4034 subst-nøyt IF
 	 (NOT 0 %gode%)
@@ -26297,7 +26349,7 @@ SELECT:4081 (adj) IF
 # overskriftstagg :-/ -KBU
 
 #:4999
- REMOVE:4999 (vblex pass) IF
+ REMOVE:4999 (vblex pasv) IF
 	   (0 s-verb)
 ;
 # KBU: Om me har valet mellom identisk passiv og pstv, vel pstv
@@ -26362,6 +26414,21 @@ REMOVE:gen-subst-setn-gr gen-subst IF
 	(1 setn-gr)
 ;
 # «dine glass.» -- _veldig_ heuristisk! men me har alt for mange genitivfeil...
+
+REMOVE:mine-data ent-subst IF
+        (0 fl-subst)
+        (-1 poss-det + fl)
+        (1 clb OR fl)
+;
+
+REMOVE:strek-saman-sett fv IF
+        (-2C subst)
+        (-1 strek)
+        (0C fv OR subst)
+        ;
+
+
+
 
 #### Simple anaphora resolution. < means span window boundaries to the left
 REMOVE:anaphora ("de" det pos) IF
