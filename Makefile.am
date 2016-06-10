@@ -2,8 +2,8 @@
 ## Makefile for apertium-nob
 ###############################################################################
 
-RELEASE=0.5
-VERSION=0.5.1
+RELEASE=0.9
+VERSION=0.9.0
 LANG1=nob
 BASENAME=apertium-$(LANG1)
 
@@ -28,10 +28,10 @@ $(LANG1).automorf.bin: $(BASENAME).$(LANG1).dix
 	lt-comp lr $< $@
 
 $(LANG1).autogen.att.gz: $(LANG1).autogen.bin
-	lt-print $< | gzip -9 -c > $@
+	lt-print $< | gzip -9 -c -n > $@
 
 $(LANG1).automorf.att.gz: $(LANG1).automorf.bin
-	lt-print $< | gzip -9 -c > $@
+	lt-print $< | gzip -9 -c -n > $@
 
 ###############################################################################
 ## Disambiguation rules
