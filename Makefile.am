@@ -2,8 +2,6 @@
 ## Makefile for apertium-nob
 ###############################################################################
 
-RELEASE=0.9
-VERSION=0.9.0
 LANG1=nob
 BASENAME=apertium-$(LANG1)
 
@@ -25,6 +23,7 @@ $(LANG1).autogen.bin: $(BASENAME).$(LANG1).dix
 
 $(LANG1).automorf.bin: $(BASENAME).$(LANG1).dix
 	apertium-validate-dictionary $<
+	test ! -f ./test-scandivoc || ./test-scandivoc
 	lt-comp lr $< $@
 
 $(LANG1).autogen.att.gz: $(LANG1).autogen.bin
@@ -70,7 +69,7 @@ pkgconfig_DATA = $(BASENAME).pc
 
 noinst_DATA=modes/$(LANG1)-morph.mode
 
-install-data-local:
+install-data-local: install-modes
 	test -d $(DESTDIR)$(apertium_nob_srcdir) || mkdir -p $(DESTDIR)$(apertium_nob_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).dix $(DESTDIR)$(apertium_nob_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).rlx $(DESTDIR)$(apertium_nob_srcdir)
