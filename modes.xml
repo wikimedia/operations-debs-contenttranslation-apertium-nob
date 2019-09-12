@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modes>
 
-  <mode name="nob-morph">
+  <mode name="nob-morph" install="yes">
     <pipeline>
       <program name="lt-proc -w -e">
         <file name="nob.automorf.bin"/>
       </program>
     </pipeline>
   </mode>
+  <mode name="nob-morph-cg">
+    <pipeline>
+      <program name="lt-proc -w -e">
+        <file name="nob.automorf.bin"/>
+      </program>
+      <program name="cg-conv -a"/>
+    </pipeline>
+  </mode>
 
-  <mode name="nob-gener">
+  <mode name="nob-gener" install="yes">
     <pipeline>
       <program name="lt-proc -g">
         <file name="nob.autogen.bin"/>
@@ -17,7 +25,7 @@
     </pipeline>
   </mode>
 
-  <mode name="nob-disam">
+  <mode name="nob-disam" install="yes">
     <pipeline>
       <program name="lt-proc -w -e">
         <file name="nob.automorf.bin"/>
@@ -40,7 +48,7 @@
     </pipeline>
   </mode>
 
-  <mode name="nob-syntax">
+  <mode name="nob-syntax" install="yes">
     <pipeline>
       <program name="lt-proc -w -e">
         <file name="nob.automorf.bin"/>
@@ -69,7 +77,7 @@
     </pipeline>
   </mode>
 
-  <mode name="nob-tagger">
+  <mode name="nob-tagger" install="yes">
     <pipeline>
       <program name="lt-proc -w -e">
         <file name="nob.automorf.bin"/>
